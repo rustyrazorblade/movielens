@@ -1,0 +1,9 @@
+keyspace: movielens
+version: 2.2
+tables:
+    - movies  
+    - users  
+    - ratings_by_user  
+    - original_movie_map  
+    - ratings_by_movie
+
