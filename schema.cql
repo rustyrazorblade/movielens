@@ -1,7 +1,6 @@
 
-CREATE KEYSPACE test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
 
-CREATE TABLE test.movies (
+CREATE TABLE movies (
     id uuid PRIMARY KEY,
     avg_rating float,
     genres set<text>,
@@ -24,7 +23,7 @@ CREATE TABLE test.movies (
     AND read_repair_chance = 0.0
     AND speculative_retry = '99PERCENTILE';
 
-CREATE TABLE test.users (
+CREATE TABLE users (
     id uuid PRIMARY KEY,
     address text,
     age int,
@@ -48,7 +47,7 @@ CREATE TABLE test.users (
     AND read_repair_chance = 0.0
     AND speculative_retry = '99PERCENTILE';
 
-CREATE TABLE test.ratings_by_user (
+CREATE TABLE ratings_by_user (
     user_id uuid,
     movie_id uuid,
     name text,
@@ -71,7 +70,7 @@ CREATE TABLE test.ratings_by_user (
     AND read_repair_chance = 0.0
     AND speculative_retry = '99PERCENTILE';
 
-CREATE TABLE test.original_movie_map (
+CREATE TABLE original_movie_map (
     original_movie_id int PRIMARY KEY,
     movie_id uuid
 ) WITH bloom_filter_fp_chance = 0.01
@@ -89,7 +88,7 @@ CREATE TABLE test.original_movie_map (
     AND read_repair_chance = 0.0
     AND speculative_retry = '99PERCENTILE';
 
-CREATE TABLE test.ratings_by_movie (
+CREATE TABLE ratings_by_movie (
     movie_id uuid,
     user_id uuid,
     rating int,
